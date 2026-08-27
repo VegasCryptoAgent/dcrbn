@@ -171,5 +171,5 @@ export const NEXT_REDIRECTS = REDIRECTS.filter(
 ).map((row) => ({
   source: row.source,
   destination: row.destination,
-  permanent: row.permanent,
+  statusCode: 301 as const,
 }));
