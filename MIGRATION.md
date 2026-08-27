@@ -32,8 +32,11 @@ Do not use: egroup.ai, de-carbon.io, decarbon.io, dcrbn.ai, or any other substit
 | — | /lotus-trader | New | New | Placeholder | Description/link missing |
 | — | /social-automation | New | New | Placeholder | Approved name/link missing |
 
-Path-level 301s are implemented in `next.config.ts`.  
-Host-level 301s (non-www → www, iangroup.ai → www.dcrbn.io) require DNS/hosting cutover and are not flipped in this commit.
+Path-level 301s are in `next.config.ts`.  
+Host-level 301s are in `src/middleware.ts` and `vercel.json`.
+
+- `dcrbn.io` and `www.dcrbn.io` are attached to the Vercel project. Nameservers still point at Wix until GoDaddy is switched to `ns1.vercel-dns.com` / `ns2.vercel-dns.com` (see `DNS.md`). Microsoft 365 MX is already staged on Vercel DNS.
+- `iangroup.ai` cannot be attached to this Vercel team (`403 Not authorized` — claimed on another Vercel account). Use the Cloudflare redirect in `DNS.md`, then the app path map.
 
 ## Inventory (source)
 
@@ -88,4 +91,4 @@ Host-level 301s (non-www → www, iangroup.ai → www.dcrbn.io) require DNS/host
 
 Done in this repo: homepage architecture, nav, CTAs, inner pages, placeholders, metadata, canonicals, sitemap, robots, structured data, path 301s, mobile-first layout, form endpoints.
 
-Still required at cutover: DNS, SSL on www.dcrbn.io, apex → www, iangroup.ai → www.dcrbn.io, Search Console sitemap submit, HighLevel rewire, mailbox provisioning, counsel review of privacy/terms, form live test, analytics, cross-browser QA on staging.
+Cutover remaining: switch dcrbn.io nameservers at GoDaddy from Wix to Vercel (MX already staged); Cloudflare 301 on iangroup.ai until the other Vercel account releases the domain; paste HighLevel inbound webhook URLs into `APPLY_WEBHOOK_URL` / `ALIGN_WEBHOOK_URL`; create M365 aliases privacy@ / legal@dcrbn.io forwarding to the live IAN Google inboxes (draft in Gmail).

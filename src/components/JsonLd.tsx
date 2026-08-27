@@ -11,7 +11,7 @@ export function JsonLd() {
         legalName: SITE.legalName,
         url: SITE.url,
         telephone: SITE.phone,
-        email: SITE.emails.apply,
+        email: SITE.emails.privacyLive,
         description: SITE.positioning,
         address: {
           "@type": "PostalAddress",

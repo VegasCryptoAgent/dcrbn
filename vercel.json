@@ -5,6 +5,18 @@
       "has": [{ "type": "host", "value": "dcrbn.io" }],
       "destination": "https://www.dcrbn.io/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "iangroup.ai" }],
+      "destination": "https://www.dcrbn.io/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.iangroup.ai" }],
+      "destination": "https://www.dcrbn.io/:path*",
+      "permanent": true
     }
   ]
 }

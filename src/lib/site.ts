@@ -15,8 +15,11 @@ export const SITE = {
   },
   emails: {
     privacy: "privacy@dcrbn.io",
+    privacyLive: "privacy@iangroup.ai",
     legal: "legal@dcrbn.io",
+    legalLive: "legal@iangroup.ai",
     apply: "apply@dcrbn.io",
+    applyLive: "privacy@iangroup.ai",
   },
   positioning:
     "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum.",

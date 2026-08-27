@@ -21,7 +21,11 @@ export default function PrivacyPage() {
         body="What we collect, why we collect it, and what we do with it. The short version: the only information we ask for is what we need to review your application for fit, and we do not sell it."
       />
       <Container className="prose-legal max-w-[760px] space-y-10 pb-24 text-[15.5px] leading-[1.7] font-light text-soft">
-        <p className="text-mute">Effective 27 August 2026 · Last updated 27 August 2026</p>
+        <p className="text-mute">
+          Effective 27 July 2026 · Last updated 27 August 2026. This is the DCRBN LLC policy previously published on
+          iangroup.ai, updated for the Speed to Scale site and destination domain www.dcrbn.io. Counsel language from
+          the live IAN policy is retained; brand and mailbox names are the only material edits.
+        </p>
         <Block n="01" t="Who we are and what this covers">
           <p>
             This site is operated by {SITE.legalName}, referred to here as DCRBN, we, or us. We are a Speed to Scale
@@ -67,7 +71,18 @@ export default function PrivacyPage() {
           </p>
         </Block>
         <Block n="05" t="How we share information">
-          <p>We share information with service providers who process it on our behalf, under contract, and only for the purposes described in this policy, including hosting, content delivery, and form routing. We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</p>
+          <p>
+            We share information with service providers who process it on our behalf, under contract, and only for the
+            purposes described in this policy:
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>HighLevel / LeadConnector for CRM, application routing, and email delivery</li>
+            <li>Vercel for website hosting</li>
+            <li>Google Workspace for {SITE.emails.privacyLive} and {SITE.emails.legalLive}</li>
+            <li>Microsoft 365 for {SITE.emails.privacy} and {SITE.emails.legal} on dcrbn.io</li>
+            <li>Cloudflare where iangroup.ai DNS still uses Cloudflare during the 301 cutover</li>
+          </ul>
+          <p>We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</p>
         </Block>
         <Block n="06" t="How long we keep information">
           <p>
@@ -79,6 +94,10 @@ export default function PrivacyPage() {
           <p>
             Depending on where you live, you may have the right to know, correct, delete, or receive a copy of personal
             information we hold, and to object to certain processing. To make a request, email{" "}
+            <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.privacyLive}`}>
+              {SITE.emails.privacyLive}
+            </a>{" "}
+            or{" "}
             <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.privacy}`}>
               {SITE.emails.privacy}
             </a>{" "}
@@ -91,7 +110,15 @@ export default function PrivacyPage() {
             <br />
             {SITE.address.street}, {SITE.address.city}, {SITE.address.region} {SITE.address.postal}, {SITE.address.country}
             <br />
-            Email {SITE.emails.privacy}
+            Email{" "}
+            <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.privacy}`}>
+              {SITE.emails.privacy}
+            </a>
+            <br />
+            Live inbox during migration:{" "}
+            <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.privacyLive}`}>
+              {SITE.emails.privacyLive}
+            </a>
             <br />
             Phone {SITE.phone}
           </p>

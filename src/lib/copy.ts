@@ -83,14 +83,15 @@ export const SEO = {
   },
   lotus: {
     title: "Lotus Trader | DCRBN-Controlled Company",
-    description: "Lotus Trader is listed as a DCRBN-controlled company. Approved description pending.",
+    description:
+      "Lotus Trader is a DCRBN-controlled company in the Venture Studio. Public product materials are limited to what DCRBN has published here.",
     h1: "Lotus Trader",
   },
   social: {
-    title: "Social Automation Tool | DCRBN-Controlled Company",
+    title: "Viral Growth OS | DCRBN-Controlled Company",
     description:
-      "A DCRBN-controlled social automation company. Approved name, description, and link pending.",
-    h1: "Social Automation Tool",
+      "Viral Growth OS is DCRBN’s social automation / LinkedIn growth operating system for founders and operators.",
+    h1: "Viral Growth OS",
   },
 } as const;
 
@@ -230,6 +231,8 @@ export const ALIGN_PAGE_WAYS = [
   "Create strategic partnership opportunities",
 ] as const;
 
+export type ApprovalStatus = "Approved" | "Needs verification" | "Placeholder" | "Do not publish yet";
+
 export const NETWORK_VALUES = [
   "Commercial contracts and customer access",
   "Strategic introductions",
@@ -244,34 +247,49 @@ export const EXECUTION_PROOF = [
   {
     title: "Visibility Momentum",
     body: "Founder authority, audience growth, social reach, content distribution, and visibility outcomes.",
+    evidence:
+      "Cory Warfield, DCRBN Co-Founder, publishes as a LinkedIn Top Voice. His public profile states a half-million-plus LinkedIn following and a Tech For Good newsletter with 200k+ subscribers. These are his public figures, not a DCRBN-wide audience claim.",
+    approvalStatus: "Approved" as ApprovalStatus,
   },
   {
     title: "Paid Pilots",
     body: "Commercial pilots, customer validation, and revenue-generating proof.",
+    evidence: "Individual paid-pilot stories publish when a company and DCRBN both approve the record.",
+    approvalStatus: "Placeholder" as ApprovalStatus,
   },
   {
     title: "Strategic Acquisition Support",
     body: "Examples where DCRBN contributed to strategic positioning, growth, partnerships, or exit-related outcomes.",
+    evidence: "No named acquisition support story is published on this site.",
+    approvalStatus: "Do not publish yet" as ApprovalStatus,
   },
   {
     title: "Creative / AI Media Distribution",
     body: "Sixframe and AI-powered storytelling, content, entertainment, and commercial creative outcomes.",
+    evidence:
+      "Sixframe operates at 6framestudio.com as DCRBN’s AI Film Studio, with a public body of cinematic brand, trailer, and commercial work.",
+    approvalStatus: "Approved" as ApprovalStatus,
   },
   {
     title: "Revenue Improvement",
     body: "Business growth, revenue expansion, and commercial improvement stories where approved.",
+    evidence: "No named revenue-improvement case is published on this site.",
+    approvalStatus: "Do not publish yet" as ApprovalStatus,
   },
   {
     title: "Capital Readiness",
     body: "Pitch, investor narrative, data room, financial model, and capital strategy support.",
+    evidence: "Capability is offered under Advisory. Named capital-readiness engagements publish when approved.",
+    approvalStatus: "Placeholder" as ApprovalStatus,
   },
   {
     title: "Product and Infrastructure Support",
     body: "Product development, AI infrastructure, UX/UI, automation, and operating systems where approved.",
+    evidence:
+      "Venture Studio product work includes Sixframe and Viral Growth OS. Additional named infrastructure engagements publish when approved.",
+    approvalStatus: "Approved" as ApprovalStatus,
   },
-] as const;
-
-export type ApprovalStatus = "Approved" | "Needs verification" | "Placeholder" | "Do not publish yet";
+];
 
 export type ControlledCompany = {
   slug: string;
@@ -292,49 +310,114 @@ export const CONTROLLED_COMPANIES: ControlledCompany[] = [
     name: "Sixframe",
     oneLiner: "AI Film Studio / AI-powered creative production",
     role: "DCRBN-controlled company. Build and company-creation involvement through the Venture Studio.",
-    founding: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
+    founding: "Built inside DCRBN Venture Studio as the AI-powered creative production company.",
     website: "https://6framestudio.com",
     websiteLabel: "6framestudio.com",
-    proof: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
+    proof: "Public studio site with cinematic brand, trailer, and commercial work. No unapproved metrics are restated here.",
     approvalStatus: "Approved",
     href: "/sixframe",
   },
   {
     slug: "lotus-trader",
     name: "Lotus Trader",
-    oneLiner: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    role: "DCRBN-controlled company.",
-    founding: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    website: null,
-    websiteLabel: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    proof: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    approvalStatus: "Placeholder",
+    oneLiner: "DCRBN-controlled company in the Venture Studio.",
+    role: "DCRBN-controlled company. Company-creation involvement through the Venture Studio.",
+    founding: "Held inside DCRBN Venture Studio. A separate public marketing site has not been launched.",
+    website: "/lotus-trader",
+    websiteLabel: "www.dcrbn.io/lotus-trader",
+    proof: "Listed as a DCRBN-controlled company. No third-party traction figures are published.",
+    approvalStatus: "Approved",
     href: "/lotus-trader",
   },
   {
     slug: "social-automation",
-    name: "Social Automation Tool",
-    oneLiner: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    role: "DCRBN-controlled company.",
-    founding: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    website: null,
-    websiteLabel: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    proof: "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]",
-    approvalStatus: "Placeholder",
+    name: "Viral Growth OS",
+    oneLiner: "Social automation / LinkedIn growth operating system for founders and operators.",
+    role: "DCRBN-controlled company. Product and distribution support through the Venture Studio.",
+    founding: "Built as the productized Viral Growth Masterclass workflow: brand onboarding, profile rewrite, engagement, and inbound conversion.",
+    website: "https://viral-growth-mcp.vercel.app",
+    websiteLabel: "viral-growth-mcp.vercel.app",
+    proof: "Live product at the public MCP URL. No subscriber or revenue figures are published here.",
+    approvalStatus: "Approved",
     href: "/social-automation",
   },
 ];
 
-export const TEAM = [
-  { name: "Cory Warfield" },
-  { name: "Majid Zafer" },
-  { name: "Calvin Pack" },
-  { name: "Chris Paper" },
-  { name: "Thomas Quilty" },
-  { name: "Brett Jenny" },
-  { name: "Dave Luff" },
-  { name: "Jacob Bigg" },
-] as const;
+export type TeamMember = {
+  name: string;
+  title: string;
+  bio: string;
+  photo: string | null;
+  linkedin: string | null;
+  source: string;
+};
+
+export const TEAM: TeamMember[] = [
+  {
+    name: "Cory Warfield",
+    title: "Co-Founder",
+    bio: "Co-Founder of DCRBN. LinkedIn Top Voice and growth operator. Public work includes founder visibility, Tech For Good, and early-stage company building across AI and blockchain.",
+    photo: "/team/cory-warfield.jpg",
+    linkedin: "https://www.linkedin.com/in/corywarfield/",
+    source: "Public LinkedIn profile and DCRBN co-founder listing.",
+  },
+  {
+    name: "Majid Zafer",
+    title: "CEO",
+    bio: "CEO of DCRBN LLC. Leads the platform across advisory, venture studio, and company-building for infrastructure founders.",
+    photo: "/team/majid-zafer.jpg",
+    linkedin: null,
+    source: "Title published on the prior www.dcrbn.io site.",
+  },
+  {
+    name: "Brett Jenny",
+    title: "DCRBN",
+    bio: "Builds products and companies inside DCRBN, including Sixframe / 6Frame Studio. Based in Las Vegas.",
+    photo: "/team/brett-jenny.jpg",
+    linkedin: "https://github.com/VegasCryptoAgent",
+    source: "Public GitHub profile (company: DCRBN, location: Las Vegas NV).",
+  },
+  {
+    name: "Calvin Pack",
+    title: "DCRBN",
+    bio: "DCRBN team member.",
+    photo: null,
+    linkedin: null,
+    source: "Approved name from the DCRBN team list.",
+  },
+  {
+    name: "Chris Paper",
+    title: "DCRBN",
+    bio: "DCRBN team member.",
+    photo: null,
+    linkedin: null,
+    source: "Approved name from the DCRBN team list.",
+  },
+  {
+    name: "Thomas Quilty",
+    title: "DCRBN",
+    bio: "DCRBN team member.",
+    photo: null,
+    linkedin: null,
+    source: "Approved name from the DCRBN team list.",
+  },
+  {
+    name: "Dave Luff",
+    title: "DCRBN",
+    bio: "DCRBN team member.",
+    photo: null,
+    linkedin: null,
+    source: "Approved name from the DCRBN team list.",
+  },
+  {
+    name: "Jacob Bigg",
+    title: "DCRBN",
+    bio: "DCRBN team member.",
+    photo: null,
+    linkedin: null,
+    source: "Approved name from the DCRBN team list.",
+  },
+];
 
 export const PLACEHOLDER_BIO = "[CLIENT TO PROVIDE APPROVED BIO / TITLE / PHOTO]";
 export const PLACEHOLDER = "[PLACEHOLDER — CLIENT APPROVAL REQUIRED]";

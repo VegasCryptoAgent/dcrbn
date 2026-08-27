@@ -37,13 +37,11 @@ export default function ProofPage() {
               </div>
               <dl className="mt-5 grid gap-4 md:grid-cols-2">
                 <ProofField label="Logo">
-                  <Placeholder>{PLACEHOLDER}</Placeholder>
+                  <span className="text-hi">{company.name}</span>
                 </ProofField>
                 <ProofField label="One-line problem / solution">{company.oneLiner}</ProofField>
                 <ProofField label="DCRBN’s role">{company.role}</ProofField>
-                <ProofField label="Founding / build context">
-                  <Placeholder>{company.founding}</Placeholder>
-                </ProofField>
+                <ProofField label="Founding / build context">{company.founding}</ProofField>
                 <ProofField label="Website">
                   {company.website ? (
                     <a href={company.website} className="text-blue-lt no-underline hover:text-hi">
@@ -53,9 +51,7 @@ export default function ProofPage() {
                     <Placeholder>{company.websiteLabel}</Placeholder>
                   )}
                 </ProofField>
-                <ProofField label="Relevant proof">
-                  <Placeholder>{company.proof}</Placeholder>
-                </ProofField>
+                <ProofField label="Relevant proof">{company.proof}</ProofField>
               </dl>
               <Link href={company.href} className="mt-5 inline-block text-[14px] text-blue-lt no-underline">
                 Internal company page
@@ -82,8 +78,13 @@ export default function ProofPage() {
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {EXECUTION_PROOF.map((item) => (
             <Card key={item.title} title={item.title} body={item.body}>
-              <div className="mt-4">
-                <Placeholder>{PLACEHOLDER}</Placeholder>
+              <div className="mt-4 space-y-3">
+                <StatusChip status={item.approvalStatus} />
+                {item.approvalStatus === "Do not publish yet" ? (
+                  <Placeholder>Not published.</Placeholder>
+                ) : (
+                  <p className="text-[14px] leading-relaxed text-soft">{item.evidence}</p>
+                )}
               </div>
             </Card>
           ))}

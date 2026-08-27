@@ -21,7 +21,11 @@ export default function TermsPage() {
         body="The rules for using this site, what an application does and does not create, and the limits of what we promise."
       />
       <Container className="max-w-[760px] space-y-10 pb-24 text-[15.5px] leading-[1.7] font-light text-soft">
-        <p className="text-mute">Effective 27 August 2026 · Last updated 27 August 2026</p>
+        <p className="text-mute">
+          Effective 27 July 2026 · Last updated 27 August 2026. This is the DCRBN LLC terms previously published on
+          iangroup.ai, updated for www.dcrbn.io and Speed to Scale. The investment, outcome, and Nevada-law provisions
+          are unchanged from that live policy.
+        </p>
         <Block n="01" t="Agreement to these terms">
           <p>
             These terms are a binding agreement between you and {SITE.legalName}, referred to here as DCRBN, we, or us.
@@ -90,7 +94,15 @@ export default function TermsPage() {
             <br />
             {SITE.address.street}, {SITE.address.city}, {SITE.address.region} {SITE.address.postal}, {SITE.address.country}
             <br />
-            Email {SITE.emails.legal}
+            Email{" "}
+            <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.legal}`}>
+              {SITE.emails.legal}
+            </a>
+            <br />
+            Live inbox during migration:{" "}
+            <a className="text-blue-lt no-underline" href={`mailto:${SITE.emails.legalLive}`}>
+              {SITE.emails.legalLive}
+            </a>
             <br />
             Phone {SITE.phone}
           </p>

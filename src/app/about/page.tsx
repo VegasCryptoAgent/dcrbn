@@ -1,7 +1,6 @@
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
-import { Placeholder } from "@/components/Placeholder";
 import { CtaBand, PageHero, Section } from "@/components/ui";
-import { NETWORK_VALUES, PHASES, PLACEHOLDER_BIO, SEO, TEAM } from "@/lib/copy";
+import { NETWORK_VALUES, PHASES, SEO, TEAM } from "@/lib/copy";
 import { pageMeta } from "@/lib/seo";
 import { CTA, SITE } from "@/lib/site";
 
@@ -57,16 +56,31 @@ export default function AboutPage() {
       <Section id="people" className="bg-ink-sec">
         <h2 className="text-[clamp(26px,3.4vw,36px)] font-medium text-hi">The People</h2>
         <p className="mt-4 max-w-[62ch] text-[15px] text-mute">
-          Approved names only. Titles, bios, and photos publish when supplied.
+          Titles and bios below are limited to public DCRBN records. Longer CVs are not invented here.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((person) => (
             <article key={person.name} className="rounded-2xl border border-line bg-panel p-5">
-              <div className="mb-4 aspect-square rounded-xl border border-dashed border-line bg-ink-sec" />
+              {person.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={person.photo}
+                  alt={`${person.name}, ${person.title}`}
+                  className="mb-4 aspect-square w-full rounded-xl object-cover"
+                />
+              ) : (
+                <div className="mb-4 flex aspect-square items-center justify-center rounded-xl border border-dashed border-line bg-ink-sec text-[13px] text-mute">
+                  Photo not published
+                </div>
+              )}
               <h3 className="text-[17px] text-hi">{person.name}</h3>
-              <div className="mt-3">
-                <Placeholder>{PLACEHOLDER_BIO}</Placeholder>
-              </div>
+              <p className="mt-1 text-[13px] tracking-wide text-blue-lt">{person.title}</p>
+              <p className="mt-3 text-[14px] leading-relaxed text-soft">{person.bio}</p>
+              {person.linkedin ? (
+                <a href={person.linkedin} className="mt-3 inline-block text-[13px] text-blue-lt no-underline">
+                  Public profile
+                </a>
+              ) : null}
             </article>
           ))}
         </div>
